@@ -1,0 +1,17 @@
+{% load static %}
+
+    <div class="login">
+        <h1><img src="https://i.imgur.com/wvLiKam.png" width="200px" height="68px"></h1>
+        <form action="/accounts/register/" method="post">
+            {% csrf_token %} {% for field in form %}
+            <input id="{{ field.id_for_label }}" placeholder="{{field.name}}" type="text" name="{{ field.html_name }}"> {{ field.errors }} {% endfor %}
+
+            <input type="submit" value="Create Account" /><br>
+            <input type="hidden" name="next" value="{{next}}">
+        </form>
+    </div>
+
+    <div class="infobox">
+        <p>Already have an account? <a href="/accounts/login">Sign in</a></p>
+    </div>
+
